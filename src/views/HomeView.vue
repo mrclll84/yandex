@@ -1,7 +1,41 @@
 <template>
   <div class="home bg-grey-3">
     <div class="d-flex items-center justify-center full-height bg-dark">
+
       <div class="text-white" id="typewriter"></div>
+
+      <div class="css">
+        <p>
+          <span class="text-h5 text-center text-white">Моя css фишка</span>
+          <br>
+          <p class="text-white q-px-xl q-ma-none">Данный код позволяет передать массив цветов в миксин и он в :root создаст переменные,
+            после чего есть возможность прокидывать в пропс для quasar components.
+            <br>Данная фишка полезна при применении любых других стилевых
+            фреймворков, а также показывает что программировать можно и в css с помощью sass
+          </p>
+
+
+          <pre class="text-left text-white">
+            @mixin generateQuasarColors($arr){
+              :root {
+              @each $name, $color in $arr {
+                --q-#{$name}-lv-color: #{$color};
+              }
+            }
+
+            @each $name, $color in $arr {
+              .bg-#{$name} {
+                background: var(--q-#{$name}-lv-color, #{$color}) !important;
+              }
+
+              .text-#{$name} {
+                color: var(--q-#{$name}-lv-color, #{$color}) !important;
+              }
+            }
+          }
+          </pre>
+        </p>
+      </div>
 
       <q-carousel
           animated
@@ -47,6 +81,7 @@ onMounted(async () => {
         .deleteAll()
         .typeString('С программированием столкнулся в институте и влюбился в это дело')
         .pauseFor(2000)
+        .deleteAll()
         .typeString('Если тебе интересно и хочешь научиться также, то пройди тестовое задание')
         .pauseFor(2000)
         .deleteAll()
@@ -80,6 +115,14 @@ $typewriterHeight: 27px;
 
   .carousel{
     height: calc(100vh - #{$headerHeight} - #{$typewriterHeight});
+  }
+
+  .img{
+    width: 100%;
+    height: 400px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 }
 </style>

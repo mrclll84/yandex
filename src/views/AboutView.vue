@@ -77,7 +77,7 @@
         Выложи задание в гитхаб и нажми кнопку отправить
         <q-stepper-navigation>
           <q-btn color="primary" label="Отправить мне" />
-          <q-btn flat @click="step = 3" color="primary" label="Back" class="q-ml-sm" />
+          <q-btn flat @click="step = 3" color="primary" label="Назад" class="q-ml-sm" />
         </q-stepper-navigation>
       </q-step>
     </q-stepper>
